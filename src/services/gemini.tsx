@@ -19,18 +19,19 @@ export const generateGiftSuggestions = async (formData) => {
   }
 
   const prompt = `Provide 5 unique gift ideas based on:
-    Occasion: ${formData.occasion}
-    Relationship: ${formData.relationship}
-    Interests: ${formData.interests.join(", ")}
-    Budget: $${formData.budget}
+  
+  Occasion: ${formData.occasion}
+  Relationship: ${formData.relationship}
+  Interests: ${formData.interests.join(", ")}
+  Budget: ₹${formData.budget}
 
-    Format the response as a JSON array of objects with:
-    - title (string)
-    - description (string)
-    - reasoning (string)
-    - estimatedPrice (string)
+  Format the response as a JSON array of objects with:
+  - title (string)
+  - description (string)
+  - reasoning (string)
+  - estimatedPrice (string, in INR, prefixed with ₹ symbol)
 
-    Ensure the response is valid JSON with no extra text.`;
+  Ensure the response is valid JSON with no extra text.`;
 
   try {
     
@@ -58,7 +59,7 @@ export const generateGiftSuggestions = async (formData) => {
         title: "Error",
         description: "Sorry, we couldn't generate suggestions at this time. Please try again.",
         reasoning: "AI service error.",
-        estimatedPrice: "$0",
+        estimatedPrice: "INR. 0",
       },
     ];
   }
